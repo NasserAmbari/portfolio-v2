@@ -9,7 +9,7 @@ const menuNavigation = [
   { name: "Home", href: "/" },
   { name: "About Me", href: "/about" },
   { name: "Projects", href: "/projects" },
-  { name: "Contact", href: "/contact" },
+  // { name: "Contact", href: "/contact" },
 ];
 
 const EASE_IN_OUT = [0.76, 0, 0.24, 1] as [number, number, number, number];
