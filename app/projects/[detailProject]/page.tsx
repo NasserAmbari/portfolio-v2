@@ -1,13 +1,47 @@
 import { notFound } from "next/navigation";
-import { getProjectBySlug, projects } from "@/data/projects";
+import type { Metadata } from "next";
 import RevealText from "@/components/ui/RevealText";
 import RevealMedia from "@/components/ui/RevealMedia";
 import Link from "next/link";
+import { getProjectBySlug, projects } from "@/data/projects";
 
 export function generateStaticParams() {
   return projects.map((project) => ({
     detailProject: project.slug,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { detailProject: string };
+}): Promise<Metadata> {
+  const { detailProject } = await params;
+  console.log(detailProject);
+  const project = getProjectBySlug(detailProject);
+
+  if (!project) {
+    return {
+      title: "Project Not Found",
+    };
+  }
+
+  return {
+    title: project.title,
+    description: project.description,
+    openGraph: {
+      title: project.title,
+      description: project.description,
+      images: [
+        {
+          url: project.imageUrl,
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+      ],
+    },
+  };
 }
 
 export default async function ProjectDetail({
@@ -23,7 +57,6 @@ export default async function ProjectDetail({
 
   return (
     <main className="flex flex-col gap-12 md:gap-16">
-      {/* Header */}
       <div className="flex flex-col mt-20 justify-end gap-4">
         <Link
           href="/projects"
@@ -60,7 +93,6 @@ export default async function ProjectDetail({
         </div>
       </div>
 
-      {/* Hero Image */}
       <RevealMedia
         src={project.imageUrl}
         type="image"
@@ -74,7 +106,6 @@ export default async function ProjectDetail({
         trigger="none"
       />
 
-      {/* Description */}
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8">
         <h2 className="text-2xl md:text-3xl font-semibold">
           <RevealText
@@ -97,7 +128,6 @@ export default async function ProjectDetail({
         </p>
       </div>
 
-      {/* Tech Stack */}
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8">
         <h2 className="text-2xl md:text-3xl font-semibold">
           <RevealText

@@ -9,8 +9,8 @@ const Contact = () => {
     <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-8 gap-12">
       <RevealMedia
         type="image"
-        src="/assets/hero_image.png"
-        alt="hero_image"
+        src="/assets/contact_section.jpeg"
+        alt="ahmad_nasser_ambari"
         className="rounded-2xl"
         width={1360}
         height={768}
@@ -18,7 +18,7 @@ const Contact = () => {
         trigger="viewport"
       />
 
-      <div className="flex flex-col ">
+      <div className="flex flex-col justify-center">
         <h2 className="text-4xl md:text-5xl font-semibold mb-2">
           <RevealText
             text={`HENLO THERE 👋`}
