@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { usePageTransition } from "@/contexts/PageTransitionContext";
 
 interface CardProps {
   title: string;
@@ -31,12 +32,14 @@ const Card = ({
 }: CardProps) => {
   const yOffset = direction === "up" ? 40 : -40;
   const totalDelay = delay + index * stagger;
+  const { isTransitionReady } = usePageTransition();
 
   const content = (
     <motion.article
       className="rounded-xl overflow-hidden"
       initial={{ opacity: 0, y: yOffset }}
-      whileInView={{ opacity: 1, y: 0 }}
+      whileInView={isTransitionReady ? { opacity: 1, y: 0 } : undefined}
+      animate={!isTransitionReady ? { opacity: 0, y: yOffset } : undefined}
       viewport={{ once: false, amount: threshold }}
       transition={{
         duration,

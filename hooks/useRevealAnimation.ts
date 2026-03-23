@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
-import { useAnimation } from "framer-motion";
+import { usePageTransition } from "@/contexts/PageTransitionContext";
 
 type AnimState = "below" | "visible" | "above";
 type Trigger = "viewport" | "none";
@@ -30,6 +30,9 @@ export function useRevealAnimation<T extends HTMLElement>({
   const ref = useRef<T>(null);
   const animState = useRef<AnimState>("below");
   const rafId = useRef<number | null>(null);
+  const hasPlayed = useRef(false);
+
+  const { isTransitionReady } = usePageTransition();
 
   const checkPosition = useCallback(() => {
     const el = ref.current;
@@ -76,27 +79,38 @@ export function useRevealAnimation<T extends HTMLElement>({
   }, [threshold, onPlay, onReset, onSnap]);
 
   useEffect(() => {
-    if (trigger === "none") {
-      onPlay();
+    if (trigger === "viewport") {
+      checkPosition();
+
+      const onScroll = () => {
+        if (rafId.current !== null) return;
+        rafId.current = requestAnimationFrame(() => {
+          checkPosition();
+          rafId.current = null;
+        });
+      };
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      return () => {
+        window.removeEventListener("scroll", onScroll);
+        if (rafId.current !== null) cancelAnimationFrame(rafId.current);
+      };
+    }
+  }, [trigger, checkPosition]);
+
+  // For trigger="none": wait until the page transition finishes before playing
+  useEffect(() => {
+    if (trigger !== "none") return;
+    if (!isTransitionReady) {
+      // Transition still running — reset played flag so it fires once ready
+      hasPlayed.current = false;
       return;
     }
+    if (hasPlayed.current) return;
 
-    checkPosition();
-
-    const onScroll = () => {
-      if (rafId.current !== null) return;
-      rafId.current = requestAnimationFrame(() => {
-        checkPosition();
-        rafId.current = null;
-      });
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      if (rafId.current !== null) cancelAnimationFrame(rafId.current);
-    };
-  }, [trigger, checkPosition, onPlay]);
+    hasPlayed.current = true;
+    onPlay();
+  }, [trigger, isTransitionReady, onPlay]);
 
   return ref;
 }

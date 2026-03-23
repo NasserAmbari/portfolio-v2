@@ -4,13 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import RevealText from "./RevealText";
 
 const menuNavigation = [
   { name: "Home", href: "/" },
   { name: "About Me", href: "/about" },
   { name: "Projects", href: "/projects" },
-  { name: "Contact", href: "#" },
+  { name: "Contact", href: "/contact" },
 ];
 
 const EASE_IN_OUT = [0.76, 0, 0.24, 1] as [number, number, number, number];
@@ -114,7 +113,15 @@ const Navbar = () => {
     <nav>
       <div className="fixed w-full z-50 backdrop-blur-lg text-white">
         <div className="mx-auto flex justify-between items-center px-4 py-4 md:px-8 max-w-480">
-          <div className="logo">Story of Bari</div>
+          <div className="logo">
+            <Image
+              src="/assets/logo_white.png"
+              alt="logo"
+              width={48}
+              height={48}
+              className="border-none"
+            />
+          </div>
           <motion.div
             data-cursor-click
             animate={{ rotate: 360 }}
@@ -123,7 +130,7 @@ const Navbar = () => {
             onClick={openMenu}
           >
             <Image
-              src="/assets/codex_menu-small.svg"
+              src="/assets/navbar_icon.svg"
               alt="menu"
               width={48}
               height={48}
@@ -173,7 +180,7 @@ const Navbar = () => {
                     onClick={closeMenu}
                   >
                     <Image
-                      src="/assets/codex_menu-small.svg"
+                      src="/assets/navbar_icon.svg"
                       alt="close"
                       width={48}
                       height={48}
@@ -204,17 +211,18 @@ const Navbar = () => {
                         <span className="text-white/20 text-xs mr-5 select-none tabular-nums">
                           {String(index + 1).padStart(2, "0")}
                         </span>
-                        <span className="flex-1 text-4xl sm:text-5xl md:text-6xl font-black leading-none tracking-tight group-hover:opacity-50 transition-opacity duration-300">
-                          <RevealText
-                            text={item.name}
-                            mode="word"
-                            trigger="none"
-                            delay={0.5 + index * 0.1}
-                            duration={0.5}
-                            stagger={0.07}
-                            direction="up"
-                          />
-                        </span>
+                        <motion.span
+                          className="flex-1 text-4xl sm:text-5xl md:text-6xl font-black leading-none tracking-tight group-hover:opacity-50 transition-opacity duration-300"
+                          initial={{ opacity: 0, y: 40 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{
+                            duration: 0.5,
+                            delay: 0.5 + index * 0.1,
+                            ease: [0.25, 0.46, 0.45, 0.94],
+                          }}
+                        >
+                          {item.name}
+                        </motion.span>
                         <span className="ml-4 text-white/20 text-lg group-hover:text-white group-hover:translate-x-1 transition-all duration-300">
                           →
                         </span>

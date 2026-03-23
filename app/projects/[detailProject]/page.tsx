@@ -24,16 +24,15 @@ export default async function ProjectDetail({
   return (
     <main className="flex flex-col gap-12 md:gap-16">
       {/* Header */}
-      <div className="flex flex-col h-[30vh] md:h-[40vh] justify-end gap-4">
+      <div className="flex flex-col mt-20 justify-end gap-4">
         <Link
           href="/projects"
           className="text-gray-400 hover:text-white transition-colors text-sm md:text-base"
         >
           <RevealText
             text="← Back to Projects"
-            mode="word"
+            mode="sentence"
             duration={0.3}
-            delay={0.1}
             trigger="none"
           />
         </Link>
@@ -42,8 +41,8 @@ export default async function ProjectDetail({
           <RevealText
             text={project.title}
             mode="sentence"
-            delay={0.2}
-            stagger={0.2}
+            duration={0.3}
+            delay={0.1}
             trigger="none"
           />
         </h1>
@@ -54,7 +53,7 @@ export default async function ProjectDetail({
               text={project.year}
               mode="sentence"
               duration={0.3}
-              delay={0.3}
+              delay={0.2}
               trigger="none"
             />
           </span>
@@ -68,7 +67,6 @@ export default async function ProjectDetail({
         alt={project.title}
         duration={0.7}
         delay={0.2}
-        threshold={0.1}
         width={1600}
         height={900}
         className="rounded-2xl overflow-hidden w-full"
@@ -83,9 +81,8 @@ export default async function ProjectDetail({
             text="About This Project"
             mode="word"
             duration={0.3}
-            stagger={0.1}
-            delay={0.2}
-            trigger="none"
+            delay={0.3}
+            trigger="viewport"
           />
         </h2>
 
@@ -94,8 +91,8 @@ export default async function ProjectDetail({
             text={project.longDescription}
             mode="sentence"
             duration={0.5}
-            delay={0.2}
-            trigger="none"
+            delay={0.3}
+            trigger="viewport"
           />
         </p>
       </div>
@@ -108,7 +105,7 @@ export default async function ProjectDetail({
             mode="word"
             duration={0.3}
             stagger={0.1}
-            delay={0.2}
+            delay={0.3}
             trigger="viewport"
           />
         </h2>

@@ -64,13 +64,22 @@ export default function RevealText({
   return (
     <span ref={ref} style={{ display: "inline" }} aria-label={text}>
       {segments.map((segment, i) => (
-        <span key={i} style={{ display: "inline-block", overflow: "hidden" }}>
+        <span
+          key={i}
+          style={{
+            display: "inline-block",
+            overflow: "hidden",
+          }}
+        >
           <motion.span
             custom={i}
             initial="hidden"
             animate={controls}
             variants={variants}
-            style={{ display: "inline-block" }}
+            style={{
+              display: "inline-block",
+              ...(mode !== "word" ? { padding: "8px 0" } : {}),
+            }}
           >
             {mode === "word" && i < segments.length - 1
               ? segment + "\u00A0"

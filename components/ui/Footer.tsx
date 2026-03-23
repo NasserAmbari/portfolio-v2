@@ -12,10 +12,19 @@ const socialLinks = [
 const Footer = () => {
   return (
     <div>
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 md:gap-0 py-8 text-2xl border-t mt-30 items-center">
-        <div className="social-container flex flex-col lg:flex-row gap-4 lg:gap-24 text-xl sm:text-2xl">
+      <div className="flex flex-col md:flex-row gap-8 md:gap-0 py-8 text-2xl border-t mt-30">
+        <div className="social-container flex flex-col gap-4 text-xl sm:text-2xl">
+          <div className="text-3xl font-semibold">
+            <RevealText
+              text={`Social`}
+              direction="up"
+              duration={0.7}
+              delay={0.2}
+              trigger="viewport"
+            />
+          </div>
           {socialLinks.map((item) => (
-            <div key={item.name} className="flex items-center gap-2">
+            <div key={item.name} className="flex pt-0.5 items-center gap-2">
               <RevealText
                 text={item.name}
                 direction="up"
@@ -39,14 +48,16 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className="text-left xl:text-right text-white font-extrabold text-5xl xl:text-7xl md:mt-12 xl:mt-0">
-          <RevealText
-            text="Story Of BARI"
-            mode="sentence"
+        <div className="relative w-full sm:w-32 md:w-60 aspect-square mt-8 md:mt-0 md:ml-auto">
+          <RevealMedia
+            type="image"
+            src="/assets/logo_full_white.png"
+            alt="Hero"
+            width={2000}
+            height={2000}
             direction="up"
-            duration={0.5}
-            stagger={0.2}
-            trigger="viewport"
+            duration={0.7}
+            delay={0.2}
           />
         </div>
       </div>

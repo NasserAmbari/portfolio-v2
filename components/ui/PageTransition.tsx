@@ -1,7 +1,12 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
+import {
+  PageTransitionProvider,
+  usePageTransition,
+} from "@/contexts/PageTransitionContext";
 
 // ─── Variants ─────────────────────────────────────────────────────────
 
@@ -21,14 +26,16 @@ const variants = {
   },
 };
 
-// ─── Component ────────────────────────────────────────────────────────
+// ─── Inner wrapper (needs context access) ─────────────────────────────
 
-export default function PageTransition({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+function TransitionContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const { markReady, markTransitioning } = usePageTransition();
+
+  // Reset ready state whenever the route changes (new transition starts)
+  useEffect(() => {
+    markTransitioning();
+  }, [pathname, markTransitioning]);
 
   return (
     <AnimatePresence mode="wait">
@@ -38,9 +45,29 @@ export default function PageTransition({
         initial="initial"
         animate="enter"
         exit="exit"
+        onAnimationComplete={(definition) => {
+          // Only mark ready when the enter animation finishes, not exit
+          if (definition === "enter") {
+            markReady();
+          }
+        }}
       >
         {children}
       </motion.div>
     </AnimatePresence>
+  );
+}
+
+// ─── Component ────────────────────────────────────────────────────────
+
+export default function PageTransition({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <PageTransitionProvider>
+      <TransitionContent>{children}</TransitionContent>
+    </PageTransitionProvider>
   );
 }

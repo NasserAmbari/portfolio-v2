@@ -81,7 +81,7 @@ const Hero = () => {
         <div className="absolute bottom-0 right-0 text-[0.6rem] md:text-sm text-neutral-400 text-right">
           <span className="font-extrabold block md:inline">
             <RevealText
-              text={`Fullstack Javascript Engineer`}
+              text={`Software Engineer`}
               duration={0.2}
               stagger={0.05}
               delay={1}

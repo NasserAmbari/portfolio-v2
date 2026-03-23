@@ -1,13 +1,16 @@
 import RevealText from "@/components/ui/RevealText";
-import RevealMedia from "@/components/ui/RevealMedia";
 import Card from "@/components/ui/Card";
 import { projects } from "@/data/projects";
 
+export const metadata = {
+  title: "Projects",
+};
+
 const Projects = () => {
   return (
-    <main className="flex flex-col">
-      <div className="flex flex-col h-[70vh] md:h-[70vh] justify-center">
-        <h1 className="text-6xl lg:text-8xl font-bold">
+    <main className="flex flex-col gap-12 md:gap-16">
+      <div className="flex flex-col justify-end mt-20">
+        <h1 className="text-6xl lg:text-8xl font-bold mb-8">
           <RevealText
             text={`Projects`}
             mode="sentence"
@@ -17,9 +20,9 @@ const Projects = () => {
           />
         </h1>
 
-        <hr className="my-12 border-t " />
+        {/* <hr className="my-12 border-t " /> */}
 
-        <h2 className="text-2xl lg:text-3xl ml-auto lg:w-[50vw]">
+        <h2 className="text-2xl lg:text-3x lg:w-[50vw]">
           <RevealText
             text={`I enjoy sharing the story behind each project — how it started, how it evolved, and what makes it unique.`}
             mode="word"
@@ -43,10 +46,8 @@ const Projects = () => {
           />
         ))}
       </div>
-
     </main>
   );
 };
 
 export default Projects;
-
