@@ -6,11 +6,11 @@ import { projects } from "@/data/projects";
 
 const Project = () => {
   return (
-    <div className="grid grid-cols-1 md:gap-8 gap-12">
-      <h2 className="text-4xl md:text-5xl font-semibold">
+    <div className="grid grid-cols-1 gap-8">
+      <h2 className="text-3xl md:text-5xl font-semibold">
         <RevealText
-          text={`WORK WORK 🤓`}
-          mode="word"
+          text={`Selected Work 🤓`}
+          mode="sentence"
           delay={0.2}
           stagger={0.2}
           trigger="viewport"

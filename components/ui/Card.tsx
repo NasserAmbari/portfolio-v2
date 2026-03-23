@@ -24,14 +24,14 @@ const Card = ({
   imageUrl,
   href,
   index = 0,
-  duration = 0.6,
-  delay = 0,
+  duration = 0.7,
+  delay = 0.5,
   direction = "up",
   stagger = 0.05,
   threshold = 0.3,
 }: CardProps) => {
   const yOffset = direction === "up" ? 40 : -40;
-  const totalDelay = delay + index * stagger;
+  const totalDelay = delay;
   const { isTransitionReady } = usePageTransition();
 
   const content = (

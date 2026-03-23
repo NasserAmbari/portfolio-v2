@@ -11,7 +11,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  // metadataBase: new URL("https://yourdomain.com"),
+  metadataBase: new URL("https://storyofbari.vercel.app"),
   title: {
     default: "Story of Bari",
     template: "%s | Story of Bari",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Story of Bari",
     description:
-      "A personal blog about my journey as a software developer, sharing insights, experiences, and tips on coding, career growth, and the tech industry.",
+      "A personal blog about my journey as a software developer, career growth, and the tech industry.",
     siteName: "Story of Bari",
     images: [
       {
@@ -40,6 +40,13 @@ export const metadata: Metadata = {
     ],
     locale: "id_ID",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Story of Bari",
+    description:
+      "A personal site about my journey as a software developer, career growth, and the tech industry.",
+    images: ["/assets/logo_black.png"],
   },
   icons: {
     icon: "/assets/logo_black.ico",

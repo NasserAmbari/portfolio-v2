@@ -57,7 +57,7 @@ export default async function ProjectDetail({
 
   return (
     <main className="flex flex-col gap-12 md:gap-16">
-      <div className="flex flex-col mt-20 justify-end gap-4">
+      <div className="flex flex-col mt-10 md:mt-20 justify-end gap-4">
         <Link
           href="/projects"
           className="text-gray-400 hover:text-white transition-colors text-sm md:text-base"
@@ -93,27 +93,29 @@ export default async function ProjectDetail({
         </div>
       </div>
 
-      <RevealMedia
-        src={project.imageUrl}
-        type="image"
-        alt={project.title}
-        duration={0.7}
-        delay={0.2}
-        width={1600}
-        height={900}
-        className="rounded-2xl overflow-hidden w-full"
-        direction="up"
-        trigger="none"
-      />
+      <div className="rounded-2xl overflow-hidden w-full">
+        <RevealMedia
+          src={project.imageUrl}
+          type="image"
+          alt={project.title}
+          duration={0.3}
+          delay={1}
+          width={1600}
+          height={900}
+          className="rounded-2xl overflow-hidden w-full"
+          direction="up"
+          trigger="none"
+        />
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8">
         <h2 className="text-2xl md:text-3xl font-semibold">
           <RevealText
             text="About This Project"
-            mode="word"
+            mode="sentence"
             duration={0.3}
             delay={0.3}
-            trigger="viewport"
+            trigger="none"
           />
         </h2>
 

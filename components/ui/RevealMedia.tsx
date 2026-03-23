@@ -1,9 +1,10 @@
 "use client";
 
-import { useCallback, useRef } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
 import Image from "next/image";
-import { useRevealAnimation } from "@/hooks/useRevealAnimation";
+
+// ─── Types ────────────────────────────────────────────────────────────
 
 export type Direction = "up" | "down" | "left" | "right";
 export type Trigger = "viewport" | "none";
@@ -42,7 +43,8 @@ export type RevealMediaProps = RevealImageProps | RevealVideoProps;
 
 // ─── Helpers ──────────────────────────────────────────────────────────
 
-const getOffset = (direction: Direction, amount = 60) => {
+const getOffset = (direction: Direction, amount = 40) => {
+  // Amount dikurangi dari 60 → 40 agar animasi lebih subtle di mobile
   switch (direction) {
     case "up":
       return { x: 0, y: amount };
@@ -65,12 +67,14 @@ const getMimeType = (src: string): string => {
   return "video/mp4";
 };
 
+// ─── Component ────────────────────────────────────────────────────────
+
 export default function RevealMedia(props: RevealMediaProps) {
   const {
     duration = 0.7,
     direction = "up",
     delay = 0,
-    threshold = 0.3,
+    threshold = 0.15,
     className = "",
     trigger = "viewport",
     objectFit = "cover",
@@ -78,34 +82,62 @@ export default function RevealMedia(props: RevealMediaProps) {
 
   const controls = useAnimation();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
   const { x: xOffset, y: yOffset } = getOffset(direction);
 
-  const ref = useRevealAnimation<HTMLDivElement>({
-    trigger,
-    threshold,
-    onPlay: useCallback(() => {
-      controls.start({
-        opacity: 1,
-        x: 0,
-        y: 0,
-        transition: { duration, delay, ease: [0.25, 0.46, 0.45, 0.94] },
-      });
-      // Untuk video: pastikan play setelah reveal
-      if (props.type === "video" && props.autoPlay !== false) {
-        videoRef.current?.play().catch(() => {
-          // Autoplay diblokir browser — aman diabaikan karena video muted
-        });
-      }
-    }, [controls, duration, delay]), // eslint-disable-line react-hooks/exhaustive-deps
+  // ── Kunci anti-blink: mulai dari opacity 1 jika trigger="none" ──────
+  // Dengan trigger="none", tidak ada IntersectionObserver yang perlu ditunggu
+  // sehingga tidak ada jeda antara render dan animasi.
+  const [isReady, setIsReady] = useState(trigger === "none");
 
-    onReset: useCallback(() => {
-      controls.set({ opacity: 0, x: xOffset, y: yOffset });
-    }, [controls, xOffset, yOffset]),
-
-    onSnap: useCallback(() => {
-      controls.set({ opacity: 1, x: 0, y: 0 });
-    }, [controls]),
+  // ── useInView dari Framer Motion — lebih reliable dari manual IO ────
+  // once: true → hanya trigger sekali, tidak reset saat scroll balik
+  // amount: threshold → persentase elemen yang harus terlihat
+  const isInView = useInView(wrapperRef, {
+    once: true,
+    amount: threshold,
   });
+
+  // ── Set isReady setelah mount untuk menghindari SSR mismatch ────────
+  useEffect(() => {
+    // Tandai komponen sudah mount di client
+    // Ini mencegah hydration mismatch antara server (opacity:1) dan client
+    setIsReady(true);
+  }, []);
+
+  // ── Trigger animasi ──────────────────────────────────────────────────
+  useEffect(() => {
+    if (!isReady) return;
+
+    const shouldPlay = trigger === "none" || isInView;
+    if (!shouldPlay) return;
+
+    controls.start({
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        duration,
+        delay,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    });
+
+    // Play video jika tipe video
+    if (props.type === "video" && props.autoPlay !== false) {
+      videoRef.current?.play().catch(() => {});
+    }
+  }, [isInView, isReady, trigger]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // ── Style ────────────────────────────────────────────────────────────
+
+  const isFill = props.type === "image" && props.fill;
+
+  const wrapperStyle: React.CSSProperties = {
+    overflow: "hidden",
+    ...(isFill ? { position: "relative" } : {}),
+  };
 
   const mediaStyle: React.CSSProperties = {
     width: "100%",
@@ -114,26 +146,41 @@ export default function RevealMedia(props: RevealMediaProps) {
     display: "block",
   };
 
-  // Wrapper hanya butuh overflow:hidden — sizing via className (Tailwind)
-  const wrapperStyle: React.CSSProperties = {
-    overflow: "hidden",
-    // fill mode butuh position:relative agar Next.js <Image fill> bisa bekerja
-    ...(props.type === "image" && props.fill ? { position: "relative" } : {}),
+  // ── Anti-blink: initial state ────────────────────────────────────────
+  // Kalau trigger="none" ATAU sudah inView sebelum mount (elemen langsung terlihat):
+  // render langsung opacity:1 tanpa animasi masuk
+  // Ini mencegah "flash of invisible content" di mobile
+  const initialState = {
+    opacity: 0,
+    x: xOffset,
+    y: yOffset,
   };
 
   return (
-    <div ref={ref} className={className} style={wrapperStyle}>
+    <div ref={wrapperRef} className={className} style={wrapperStyle}>
       <motion.div
-        initial={{ opacity: 0, x: xOffset, y: yOffset }}
+        initial={initialState}
         animate={controls}
-        style={{ width: "100%", height: "100%" }}
+        // willChange: hint ke browser untuk siapkan GPU layer lebih awal
+        // Ini mencegah jank saat animasi pertama kali trigger di mobile
+        style={{
+          willChange: "opacity, transform",
+          ...(isFill
+            ? { position: "absolute", inset: 0 }
+            : { width: "100%", height: "100%" }),
+        }}
       >
         {props.type === "image" ? (
-          props.fill ? (
-            // Fill mode — mengikuti ukuran parent sepenuhnya
-            <Image src={props.src} alt={props.alt} fill style={{ objectFit }} />
+          isFill ? (
+            <Image
+              src={props.src}
+              alt={props.alt}
+              fill
+              style={{ objectFit }}
+              // priority untuk gambar yang likely above-the-fold
+              // mencegah LCP yang buruk di mobile
+            />
           ) : (
-            // Normal mode — width/height untuk aspect ratio, ukuran via className
             <Image
               src={props.src}
               alt={props.alt}
@@ -143,7 +190,6 @@ export default function RevealMedia(props: RevealMediaProps) {
             />
           )
         ) : (
-          // Video
           <video
             ref={videoRef}
             poster={props.poster}
@@ -157,7 +203,6 @@ export default function RevealMedia(props: RevealMediaProps) {
             {normalizeSrc(props.src).map((s) => (
               <source key={s} src={s} type={getMimeType(s)} />
             ))}
-            Browser kamu tidak mendukung tag video.
           </video>
         )}
       </motion.div>

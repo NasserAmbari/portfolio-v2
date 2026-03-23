@@ -21,28 +21,8 @@ const Hero = () => {
           position: "absolute",
           opacity: isActive ? 1 : 0,
         }}
-      >
-        {/* <PixelBlast
-          variant="square"
-          pixelSize={4}
-          color="gray"
-          patternScale={4}
-          patternDensity={0.2}
-          pixelSizeJitter={1}
-          enableRipples
-          rippleSpeed={0.1}
-          rippleThickness={0.12}
-          rippleIntensityScale={1.5}
-          liquid={false}
-          liquidStrength={0.12}
-          liquidRadius={1.2}
-          liquidWobbleSpeed={5}
-          speed={0.5}
-          edgeFade={0.4}
-          transparent
-        /> */}
-      </div>
-      <div className="relative min-h-[70vh] flex flex-col justify-center items-center text-center mb-8">
+      ></div>
+      <div className="relative min-h-[65vh] md:min-h-[70vh] flex flex-col justify-center items-center text-center mb-8">
         <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold text-center">
           <RevealText
             text={`TIME CHANGE MY TITLE `}

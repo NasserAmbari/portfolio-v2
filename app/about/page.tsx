@@ -8,7 +8,7 @@ export const metadata = {
 
 const About = () => {
   return (
-    <main className="flex flex-col gap-40 items-center justify-center">
+    <main className="flex flex-col gap-40">
       {/* About Section */}
       <div className="flex items-center flex-col justify-center gap-12 mt-4">
         <h1 className="text-5xl font-bold">
@@ -29,7 +29,7 @@ const About = () => {
           delay={0.2}
           threshold={0.3}
           width={300}
-          className="rounded-4xl object-cover h-[50vh] md:h-[60vh]"
+          className="rounded-4xl object-cover md:h-[60vh]"
           direction="up"
           trigger="none"
         />
@@ -43,36 +43,25 @@ const About = () => {
             trigger="none"
           />
         </p>
-        {/* Button Resume */}
+
         <button className="self-start text-sm md:text-md w-52 mx-auto">
-          <div className="flex items-center justify-center border-b mx-auto text-xl">
+          <div className="flex items-center justify-center mx-auto text-xl">
             <RevealText
-              text={`Download Resume`}
+              text={`Download Resume ➜]`}
               direction="up"
               duration={0.7}
               delay={0.2}
               trigger="viewport"
-            />
-
-            <RevealMedia
-              type="image"
-              src="/assets/arrow.png"
-              alt="Hero"
-              direction="up"
-              width={16}
-              duration={0.7}
-              delay={0.2}
-              className="rounded-2xl"
             />
           </div>
         </button>
       </div>
 
       {/* Experience Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 mlg:gap-0 md:text-5xl">
-        <h2 className="text-4xl md:text-5xl font-semibold mb-4 md:mb-0 md:sticky">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 items-start mlg:gap-0 md:text-5xl">
+        <h2 className="text-4xl md:text-5xl font-semibold mb-4 md:mb-0 lg:sticky lg:top-20 lg:bottom-20 lg:pb-4 self-start">
           <RevealText
-            text={`WORK EXPERIENCE`}
+            text={`Work Experience`}
             mode="word"
             delay={0.2}
             stagger={0.2}
@@ -125,7 +114,7 @@ const About = () => {
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 mlg:gap-0 md:text-5xl">
         <h2 className="text-4xl md:text-5xl font-semibold mb-4 md:mb-0 md:sticky ">
           <RevealText
-            text={`EDUCATION`}
+            text={`Education`}
             mode="word"
             delay={0.2}
             stagger={0.2}

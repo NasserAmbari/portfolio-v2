@@ -2,6 +2,7 @@
 
 import RevealText from "@/components/ui/RevealText";
 import RevealMedia from "@/components/ui/RevealMedia";
+import Link from "next/link";
 
 const socialLinks = [
   { name: "Instagram", url: "https://www.instagram.com/bari/" },
@@ -12,9 +13,9 @@ const socialLinks = [
 const Footer = () => {
   return (
     <div>
-      <div className="flex flex-col md:flex-row gap-8 md:gap-0 py-8 text-2xl border-t mt-30">
+      <div className="flex flex-row md:flex-row gap-8 md:gap-0 py-8 text-2xl border-t mt-30">
         <div className="social-container flex flex-col gap-4 text-xl sm:text-2xl">
-          <div className="text-3xl font-semibold">
+          <div className="text-3xl md:text-4xl font-semibold">
             <RevealText
               text={`Social`}
               direction="up"
@@ -25,40 +26,32 @@ const Footer = () => {
           </div>
           {socialLinks.map((item) => (
             <div key={item.name} className="flex pt-0.5 items-center gap-2">
-              <RevealText
-                text={item.name}
-                direction="up"
-                duration={0.7}
-                delay={0.2}
-                trigger="viewport"
-              />
-
-              <RevealMedia
-                type="image"
-                src="/assets/arrow.png"
-                alt="Hero"
-                width={16}
-                height={16}
-                direction="up"
-                duration={0.7}
-                delay={0.2}
-                className="rounded-2xl"
-              />
+              <Link href={item.url} target="_blank" rel="noopener noreferrer">
+                <RevealText
+                  text={`${item.name}  →`}
+                  direction="up"
+                  duration={0.7}
+                  delay={0.2}
+                  trigger="viewport"
+                />
+              </Link>
             </div>
           ))}
         </div>
 
-        <div className="relative w-full sm:w-32 md:w-60 aspect-square mt-8 md:mt-0 md:ml-auto">
-          <RevealMedia
-            type="image"
-            src="/assets/logo_full_white.png"
-            alt="Hero"
-            width={2000}
-            height={2000}
-            direction="up"
-            duration={0.7}
-            delay={0.2}
-          />
+        <div className="relative w-24 sm:w-32 md:w-60 aspect-square md:mt-0 mt-auto ml-auto">
+          <Link href="/">
+            <RevealMedia
+              type="image"
+              src="/assets/logo_white.png"
+              alt="Hero"
+              width={1000}
+              height={1000}
+              direction="up"
+              duration={0.7}
+              delay={0.2}
+            />
+          </Link>
         </div>
       </div>
 

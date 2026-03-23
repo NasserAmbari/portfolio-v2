@@ -112,16 +112,19 @@ const Navbar = () => {
   return (
     <nav>
       <div className="fixed w-full z-50 backdrop-blur-lg text-white">
-        <div className="mx-auto flex justify-between items-center px-4 py-4 md:px-8 max-w-480">
+        <div className="mx-auto flex justify-between items-center px-4 py-2 md:py-4 md:px-8 max-w-480">
           <div className="logo">
-            <Image
-              src="/assets/logo_white.png"
-              alt="logo"
-              width={48}
-              height={48}
-              className="border-none"
-            />
+            <Link href="/">
+              <Image
+                src="/assets/logo_white.png"
+                alt="logo"
+                width={48}
+                height={48}
+                className="border-none"
+              />
+            </Link>
           </div>
+
           <motion.div
             data-cursor-click
             animate={{ rotate: 360 }}
@@ -234,7 +237,7 @@ const Navbar = () => {
                 {/* Footer */}
                 <div className="flex justify-between text-white/20 text-[11px] font-mono tracking-widest mt-auto">
                   <span>Story of Bari</span>
-                  <span>© 2025</span>
+                  <span>© 2026</span>
                 </div>
               </div>
             </motion.div>

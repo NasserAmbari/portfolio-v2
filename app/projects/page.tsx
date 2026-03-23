@@ -9,12 +9,11 @@ export const metadata = {
 const Projects = () => {
   return (
     <main className="flex flex-col gap-12 md:gap-16">
-      <div className="flex flex-col justify-end mt-20">
-        <h1 className="text-6xl lg:text-8xl font-bold mb-8">
+      <div className="flex flex-col justify-end mt-10 md:mt-20">
+        <h1 className="text-6xl lg:text-8xl font-bold md:mb-8">
           <RevealText
             text={`Projects`}
             mode="sentence"
-            delay={0.2}
             stagger={0.2}
             trigger="none"
           />
@@ -22,12 +21,13 @@ const Projects = () => {
 
         {/* <hr className="my-12 border-t " /> */}
 
-        <h2 className="text-2xl lg:text-3x lg:w-[50vw]">
+        <h2 className="text-lg lg:text-3x lg:w-[50vw]">
           <RevealText
             text={`I enjoy sharing the story behind each project — how it started, how it evolved, and what makes it unique.`}
-            mode="word"
-            duration={0.3}
-            stagger={0.1}
+            mode="sentence"
+            duration={0.5}
+            delay={0.2}
+            stagger={0.2}
             trigger="none"
           />
         </h2>
