@@ -82,6 +82,7 @@ const Hero = () => {
         className="rounded-2xl"
         direction="up"
         trigger="none"
+        priority
       />
     </section>
   );

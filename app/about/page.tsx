@@ -25,13 +25,15 @@ const About = () => {
           src="/assets/about_ahmad_nasser_ambari.png"
           type="image"
           alt="Hero"
-          duration={0.7}
-          delay={0.2}
+          duration={0.3}
+          delay={0.4}
           threshold={0.3}
           width={300}
           className="rounded-4xl object-cover md:h-[60vh]"
           direction="up"
           trigger="none"
+          priority
+          aspectRatio="[3/4]"
         />
 
         <p className="text-xl sm:text-3xl text-center w-full lg:w-2/3 mx-auto">

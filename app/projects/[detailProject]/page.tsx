@@ -115,7 +115,7 @@ export default async function ProjectDetail({
             mode="sentence"
             duration={0.3}
             delay={0.3}
-            trigger="none"
+            trigger="viewport"
           />
         </h2>
 
