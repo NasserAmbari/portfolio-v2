@@ -169,7 +169,7 @@ export default function RevealMedia(props: RevealMediaProps) {
            Pulse animation sebagai indikator loading.                  */}
       {!isLoaded && props.type === "image" && (
         <div
-          className="absolute inset-0 bg-white/4 animate-pulse"
+          className="absolute inset-0 bg-transparent animate-pulse"
           style={{ borderRadius: "inherit" }}
         />
       )}
