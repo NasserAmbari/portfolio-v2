@@ -74,11 +74,12 @@ const Hero = () => {
       </div>
       <RevealMedia
         type="video"
-        src="/assets/video_about.mp4"
+        src="/assets/video_about.webm"
+        preload="auto"
         duration={0.7}
-        delay={2}
+        delay={1}
         threshold={0.3}
-        className="w-full h-[40vh] md:h-[70vh] rounded-2xl"
+        className="w-full h-[30vh] md:h-[50vh] lg:h-[70vh] rounded-2xl"
         direction="up"
         trigger="none"
       />

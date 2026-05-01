@@ -45,6 +45,7 @@ interface RevealVideoProps extends RevealMediaBaseProps {
   autoPlay?: boolean;
   playsInline?: boolean;
   controls?: boolean;
+  preload?: "auto" | "metadata" | "none";
 }
 
 export type RevealMediaProps = RevealImageProps | RevealVideoProps;
@@ -218,6 +219,7 @@ export default function RevealMedia(props: RevealMediaProps) {
             autoPlay={props.autoPlay ?? true}
             playsInline={props.playsInline ?? true}
             controls={props.controls ?? false}
+            preload={props.preload ?? "auto"}
             style={mediaStyle}
           >
             {normalizeSrc(props.src).map((s) => (
