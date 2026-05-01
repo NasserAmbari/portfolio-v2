@@ -9,7 +9,6 @@ export const metadata = {
 const About = () => {
   return (
     <main className="flex flex-col gap-40">
-      {/* About Section */}
       <div className="flex items-center flex-col justify-center gap-12 mt-4">
         <h1 className="text-5xl font-bold">
           <RevealText
@@ -36,7 +35,7 @@ const About = () => {
           aspectRatio="[3/4]"
         />
 
-        <p className="text-xl sm:text-7xl text-justify w-full ont-medium mx-auto">
+        <p className="text-xl md:text-4xl lg:text-6xl text-justify w-full font-medium mx-auto">
           <RevealText
             text={`I’m a software engineer with experience in the mining industry, passionate about building impactful digital experiences. Born and raised in Balikpapan, Borneo, I strive to create technology that makes real-world operations more efficient and innovative.`}
             mode="word"

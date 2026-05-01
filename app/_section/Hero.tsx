@@ -13,25 +13,21 @@ const Hero = () => {
 
   return (
     <section className="hero-section relative data-cursor-invert">
-      <div
-        className="inset-0 z-0 pointer-events-none transition-opacity duration-500"
-        style={{
-          width: "100%",
-          height: "500px",
-          position: "absolute",
-          opacity: isActive ? 1 : 0,
-        }}
-      >
-        <PixelBlast
-          patternScale={5}
-          patternDensity={0.3}
-          color="white"
-          liquidRadius={0.1}
-          pixelSize={2}
-        />
-      </div>
-
       <div className="relative min-h-[65vh] md:min-h-[70vh] flex flex-col justify-center items-center text-center mb-8">
+        <div
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+              z-0 pointer-events-none transition-opacity duration-500
+              w-full h-125
+              ${isActive ? "opacity-100" : "opacity-0"}`}
+        >
+          <PixelBlast
+            patternScale={5}
+            patternDensity={0.3}
+            color="white"
+            liquidRadius={0.1}
+            pixelSize={2}
+          />
+        </div>
         <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold text-center">
           <RevealText
             text={`TIME CHANGE MY TITLE BUT NOT MY CODE`}
@@ -40,7 +36,6 @@ const Hero = () => {
             mode={"word"}
           />
         </h1>
-
         {/* <h2 className="text-xs md:text-xl mt-4">
           <RevealText
             text={`Crafting somehting reliable with clarity, care, and long-term thinking.`}
