@@ -55,7 +55,7 @@ const About = () => {
         </h1>
 
         <RevealMedia
-          src="/assets/about_ahmad_nasser_ambari.png"
+          src="/assets/about_ahmad_nasser_ambari.webp"
           type="image"
           alt="Hero"
           duration={0.7}

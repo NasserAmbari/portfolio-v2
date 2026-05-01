@@ -21,32 +21,34 @@ const Hero = () => {
           position: "absolute",
           opacity: isActive ? 1 : 0,
         }}
-      ></div>
+      >
+        <PixelBlast
+          patternScale={5}
+          patternDensity={0.3}
+          color="white"
+          liquidRadius={0.1}
+          pixelSize={2}
+        />
+      </div>
+
       <div className="relative min-h-[65vh] md:min-h-[70vh] flex flex-col justify-center items-center text-center mb-8">
-        <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold text-center">
+        <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold text-center">
           <RevealText
-            text={`TIME CHANGE MY TITLE `}
+            text={`TIME CHANGE MY TITLE BUT NOT MY CODE`}
             duration={0.3}
             stagger={0.15}
-            mode={"sentence"}
-          />
-          <RevealText
-            text={`BUT NOT MY CODE`}
-            duration={0.3}
-            stagger={0.15}
-            delay={0.3}
-            mode={"sentence"}
+            mode={"word"}
           />
         </h1>
 
-        <h2 className="text-md md:text-xl mt-4">
+        {/* <h2 className="text-xs md:text-xl mt-4">
           <RevealText
             text={`Crafting somehting reliable with clarity, care, and long-term thinking.`}
             duration={0.4}
             stagger={0.15}
             delay={0.3}
           />
-        </h2>
+        </h2> */}
         <div className="absolute bottom-0 left-0 text-[0.6rem] md:text-sm text-neutral-400 text-left">
           <span className="font-extrabold block md:inline">
             <RevealText
@@ -71,18 +73,14 @@ const Hero = () => {
         </div>
       </div>
       <RevealMedia
-        type="image"
-        src="/assets/hero_image.png"
-        alt="Hero"
-        width={1360}
-        height={500}
+        type="video"
+        src="/assets/video_about.mp4"
         duration={0.7}
-        delay={0.2}
+        delay={2}
         threshold={0.3}
-        className="rounded-2xl"
+        className="w-full h-[40vh] md:h-[70vh] rounded-2xl"
         direction="up"
         trigger="none"
-        priority
       />
     </section>
   );

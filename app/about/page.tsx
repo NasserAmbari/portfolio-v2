@@ -22,7 +22,7 @@ const About = () => {
         </h1>
 
         <RevealMedia
-          src="/assets/about_ahmad_nasser_ambari.png"
+          src="/assets/about_ahmad_nasser_ambari.webp"
           type="image"
           alt="Hero"
           duration={0.3}
@@ -36,12 +36,13 @@ const About = () => {
           aspectRatio="[3/4]"
         />
 
-        <p className="text-xl sm:text-3xl text-center w-full lg:w-2/3 mx-auto">
+        <p className="text-xl sm:text-7xl text-justify w-full ont-medium mx-auto">
           <RevealText
             text={`I’m a software engineer with experience in the mining industry, passionate about building impactful digital experiences. Born and raised in Balikpapan, Borneo, I strive to create technology that makes real-world operations more efficient and innovative.`}
             mode="word"
-            delay={0.2}
-            duration={0.7}
+            threshold={0.025}
+            stagger={0.1}
+            duration={0.2}
             trigger="none"
           />
         </p>

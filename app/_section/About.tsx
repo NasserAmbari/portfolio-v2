@@ -15,7 +15,7 @@ const About = () => {
         />
       </h2>
 
-      <span>
+      <div>
         <p className="text-xl sm:text-3xl md:text-md font-normal leading-normal mb-4 md:mb-8">
           <RevealText
             text={`“Ahmad Nasser Ambari” well that my name but you can call me Nasser or Bari. im a software engineer  shaped by real-world challenge in the mining industry.`}
@@ -37,7 +37,7 @@ const About = () => {
             trigger="viewport"
           />
         </p>
-      </span>
+      </div>
     </div>
   );
 };

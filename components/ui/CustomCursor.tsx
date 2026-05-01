@@ -156,7 +156,7 @@ function CursorInner({
   ]);
 
   // ── Derived styles ─────────────────────────────────────────────────
-  const bgColor = state === "invert" ? color : "transparent";
+  const bgColor = state === "invert" ? color : "rgba(0, 0, 0, 0)";
   const bWidth = isExpanded ? borderWidth * 1.2 : borderWidth;
   const border = `${bWidth}px solid ${color}`;
 

@@ -120,6 +120,7 @@ const Navbar = () => {
                 alt="logo"
                 width={48}
                 height={48}
+                priority
                 className="border-none"
               />
             </Link>
@@ -137,6 +138,7 @@ const Navbar = () => {
               alt="menu"
               width={48}
               height={48}
+              priority
               className="border-none"
             />
           </motion.div>
@@ -157,7 +159,7 @@ const Navbar = () => {
 
             {/* Panel */}
             <motion.div
-              className="fixed inset-0 w-full z-50 bg-[#0a0a0a] text-white"
+              className="fixed inset-0 w-full z-50 bg-[#0a0a0a] text-white will-change-transform"
               variants={panelVariants}
               initial="hidden"
               animate="open"
@@ -205,6 +207,7 @@ const Navbar = () => {
                       key={index}
                       variants={itemVariants}
                       className="border-b border-white/[0.07] last:border-none overflow-hidden"
+                      style={{ willChange: "transform, opacity" }}
                     >
                       <Link
                         href={item.href}
@@ -214,18 +217,9 @@ const Navbar = () => {
                         <span className="text-white/20 text-xs mr-5 select-none tabular-nums">
                           {String(index + 1).padStart(2, "0")}
                         </span>
-                        <motion.span
-                          className="flex-1 text-4xl sm:text-5xl md:text-6xl font-black leading-none tracking-tight group-hover:opacity-50 transition-opacity duration-300"
-                          initial={{ opacity: 0, y: 40 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{
-                            duration: 0.5,
-                            delay: 0.5 + index * 0.1,
-                            ease: [0.25, 0.46, 0.45, 0.94],
-                          }}
-                        >
+                        <span className="flex-1 text-4xl sm:text-5xl md:text-6xl font-black leading-none tracking-tight group-hover:opacity-50 transition-opacity duration-300">
                           {item.name}
-                        </motion.span>
+                        </span>
                         <span className="ml-4 text-white/20 text-lg group-hover:text-white group-hover:translate-x-1 transition-all duration-300">
                           →
                         </span>

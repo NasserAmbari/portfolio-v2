@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import React, { useCallback } from "react";
 import { motion, useAnimation, Variants } from "framer-motion";
 import { useRevealAnimation } from "@/hooks/useRevealAnimation";
 
@@ -64,28 +64,31 @@ export default function RevealText({
   return (
     <span ref={ref} style={{ display: "inline" }} aria-label={text}>
       {segments.map((segment, i) => (
-        <span
-          key={i}
-          style={{
-            display: "inline-block",
-            overflow: "hidden",
-          }}
-        >
-          <motion.span
-            custom={i}
-            initial="hidden"
-            animate={controls}
-            variants={variants}
+        <React.Fragment key={i}>
+          <span
             style={{
               display: "inline-block",
-              ...(mode !== "word" ? { padding: "8px 0" } : {}),
+              overflow: "hidden",
+              verticalAlign: "bottom",
+              paddingBottom: "0.25em",
+              marginBottom: "-0.25em",
             }}
           >
-            {mode === "word" && i < segments.length - 1
-              ? segment + "\u00A0"
-              : segment}
-          </motion.span>
-        </span>
+            <motion.span
+              custom={i}
+              initial="hidden"
+              animate={controls}
+              variants={variants}
+              style={{
+                display: "inline-block",
+                ...(mode !== "word" ? { padding: "8px 0" } : {}),
+              }}
+            >
+              {segment}
+            </motion.span>
+          </span>
+          {mode === "word" && i < segments.length - 1 && " "}
+        </React.Fragment>
       ))}
     </span>
   );

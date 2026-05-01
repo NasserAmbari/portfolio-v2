@@ -34,7 +34,7 @@ const Contact = () => {
     <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-8 gap-12">
       <RevealMedia
         type="image"
-        src="/assets/contact_section.jpeg"
+        src="/assets/contact_section.webp"
         alt="ahmad_nasser_ambari"
         className="rounded-2xl overflow-hidden w-full"
         width={1360}
