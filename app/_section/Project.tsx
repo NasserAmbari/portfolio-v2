@@ -9,7 +9,7 @@ const Project = () => {
     <div className="grid grid-cols-1 gap-8">
       <h2 className="text-3xl md:text-5xl font-semibold">
         <RevealText
-          text={`Selected Work 🤓`}
+          text={`FEATURED PROJECT`}
           mode="sentence"
           delay={0.2}
           stagger={0.2}

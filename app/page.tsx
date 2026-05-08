@@ -6,12 +6,14 @@ import TechStack from "./_section/TechStack";
 
 export default function Home() {
   return (
-    <main className="grid grid-cols-1 gap-24 md:gap-48">
-      <Hero />
-      <About />
-      <TechStack />
-      <Project />
-      <Contact />
-    </main>
+    <>
+      <main className="grid grid-cols-1 gap-24 md:gap-48">
+        <Hero />
+        <About />
+        <TechStack />
+        <Project />
+        <Contact />
+      </main>
+    </>
   );
 }

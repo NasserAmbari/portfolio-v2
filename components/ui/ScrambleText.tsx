@@ -13,12 +13,12 @@ const DEFAULT_EASING: Easing = [0.16, 1, 0.3, 1];
 
 interface ScrambleTextProps {
   text: string;
-  duration?: number; // seconds
-  speed?: number; // seconds
+  duration?: number;
+  speed?: number;
   from?: "left" | "right";
   decay?: number;
   easing?: Easing;
-  once?: boolean; // scroll only once
+  once?: boolean;
 }
 
 export default function ScrambleText({

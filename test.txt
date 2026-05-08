@@ -1,0 +1,188 @@
+{/* <h2 className="text-3xl md:text-5xl font-semibold mb-4 md:mb-0">
+        <RevealText
+          text={`This is Me 😎`}
+          mode="sentence"
+          delay={0.2}
+          stagger={0.2}
+          trigger="viewport"
+        />
+      </h2>
+
+      <div>
+        <p className="text-xl sm:text-3xl md:text-md font-normal leading-normal mb-4 md:mb-8">
+          <RevealText
+            text={`“Ahmad Nasser Ambari” well that my name but you can call me Nasser or Bari. im a software engineer  shaped by real-world challenge in the mining industry.`}
+            mode={"sentence"}
+            duration={0.3}
+            stagger={0.1}
+            delay={0.2}
+            trigger="viewport"
+          />
+        </p>
+
+        <p className="text-xl sm:text-3xl md:text-md font-normal leading-normal">
+          <RevealText
+            text={`Driven by curiosity and a desire to build something with technology to make meaningfull difference.`}
+            mode={"sentence"}
+            duration={0.3}
+            stagger={0.1}
+            delay={0.2}
+            trigger="viewport"
+          />
+        </p>
+      </div> */}
+
+
+      "use client";
+
+import { useRef, useState, useEffect } from "react";
+import ScrollHighlightText from "@/components/ui/ScrollHighlightText";
+import StickyScrollContainer from "@/components/ui/StickyScrollContainer";
+import ScrollImages from "@/components/ui/ScrollImages";
+
+const IMAGES = [
+  {
+    src: "https://images.unsplash.com/photo-1777432033552-5b34be22ae46?q=80&w=2078&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Photo 1",
+    top: 200,
+    left: "5%",
+    speed: 0.4,
+    w: "w-44 md:w-60",
+    h: "h-60 md:h-80",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1777432033552-5b34be22ae46?q=80&w=2078&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Photo 2",
+    top: 600,
+    right: "6%",
+    speed: 0.55,
+    w: "w-36 md:w-52",
+    h: "h-52 md:h-72",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1777432033552-5b34be22ae46?q=80&w=2078&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Photo 3",
+    top: 1000,
+    left: "12%",
+    speed: 0.45,
+    w: "w-48 md:w-64",
+    h: "h-64 md:h-96",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1777432033552-5b34be22ae46?q=80&w=2078&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Photo 4",
+    top: 900,
+    right: "10%",
+    speed: 0.6,
+    w: "w-40 md:w-56",
+    h: "h-56 md:h-80",
+  },
+];
+
+"use client";
+
+import { useRef, useState, useEffect } from "react";
+import ScrollHighlightText from "@/components/ui/ScrollHighlightText";
+import StickyScrollContainer from "@/components/ui/StickyScrollContainer";
+import ScrollImages from "@/components/ui/ScrollImages";
+
+const IMAGES = [
+  {
+    src: "https://images.unsplash.com/photo-1777432033552-5b34be22ae46?q=80&w=2078&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Photo 1",
+    top: 200,
+    left: "5%",
+    speed: 0.4,
+    w: "w-44 md:w-60",
+    h: "h-60 md:h-80",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1777432033552-5b34be22ae46?q=80&w=2078&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Photo 2",
+    top: 600,
+    right: "6%",
+    speed: 0.55,
+    w: "w-36 md:w-52",
+    h: "h-52 md:h-72",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1777432033552-5b34be22ae46?q=80&w=2078&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Photo 3",
+    top: 1000,
+    left: "12%",
+    speed: 0.45,
+    w: "w-48 md:w-64",
+    h: "h-64 md:h-96",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1777432033552-5b34be22ae46?q=80&w=2078&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Photo 4",
+    top: 900,
+    right: "10%",
+    speed: 0.6,
+    w: "w-40 md:w-56",
+    h: "h-56 md:h-80",
+  },
+];
+
+const About = () => {
+  const longText =
+    "Ini adalah contoh pertama. Komponen pembungkus sekarang bisa digunakan ulang dengan sangat mudah. Dan ini adalah contoh kedua di bagian bawah halaman. Anda bisa menaruh gambar, video, atau komponen lain di dalamnya!";
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const sectionTop = sectionRef.current?.offsetTop ?? 0;
+  const relativeScroll = scrollY - sectionTop;
+
+  return (
+    // Section luar: area scroll panjang, position relative sebagai anchor gambar
+    <div ref={sectionRef} className="relative h-[500vh] w-full overflow-hidden">
+      {/* TEKS: sticky di tengah layar */}
+      <div className="sticky top-0 h-screen flex items-center justify-center z-10 pointer-events-none">
+        <StickyScrollContainer
+          parentHeight="h-screen"
+          containerClassName="w-full max-w-[900px] h-screen flex items-center justify-center"
+        >
+          {(progress) => (
+            <div className="w-[85%] md:w-[70%]">
+              <ScrollHighlightText text={longText} progress={progress} />
+            </div>
+          )}
+        </StickyScrollContainer>
+      </div>
+
+      {/* GAMBAR: absolute di dalam section, parallax via translateY */}
+      {IMAGES.map((img, i) => {
+        const parallaxY = relativeScroll * img.speed;
+        const style: React.CSSProperties = {
+          position: "absolute",
+          top: img.top,
+          transform: `translateY(-${parallaxY}px)`,
+          willChange: "transform",
+          zIndex: 5,
+          ...(img.left ? { left: img.left } : {}),
+          ...(img.right ? { right: img.right } : {}),
+        };
+
+        return (
+          <div key={i} style={style}>
+            <img
+              src={img.src}
+              alt={img.alt}
+              className={`${img.w} ${img.h} object-cover rounded-2xl shadow-2xl`}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default About;
