@@ -1,8 +1,8 @@
-import Hero from "@/app/_section/Hero";
-import About from "@/app/_section/About";
-import Project from "@/app/_section/Project";
-import Contact from "@/app/_section/Contact";
-import TechStack from "./_section/TechStack";
+import Hero from "@/app/home/Hero";
+import About from "@/app/home/About";
+import Project from "@/app/home/Project";
+import Contact from "@/app/home/Contact";
+import TechStack from "./home/TechStack";
 
 export default function Home() {
   return (

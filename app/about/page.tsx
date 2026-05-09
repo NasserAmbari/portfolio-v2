@@ -1,6 +1,6 @@
 import RevealText from "@/components/ui/RevealText";
 import RevealMedia from "@/components/ui/RevealMedia";
-import { experiences } from "@/data/projects";
+import { experiences } from "@/data/experience";
 
 export const metadata = {
   title: "About",
@@ -8,7 +8,7 @@ export const metadata = {
 
 const About = () => {
   return (
-    <main className="flex flex-col gap-40">
+    <main className="flex flex-col gap-20 md:gap-28 w-full mx-auto">
       <div className="flex items-center flex-col justify-center gap-12 mt-4">
         <h1 className="text-5xl font-bold">
           <RevealText
@@ -35,9 +35,9 @@ const About = () => {
           aspectRatio="[3/4]"
         />
 
-        <p className="text-xl md:text-4xl lg:text-6xl text-justify w-full font-medium mx-auto">
+        <p className="text-xl md:text-3xl lg:text-4xl text-justify mx-auto leading-normal">
           <RevealText
-            text={`I’m a software engineer with experience in the mining industry, passionate about building impactful digital experiences. Born and raised in Balikpapan, Borneo, I strive to create technology that makes real-world operations more efficient and innovative.`}
+            text={`From Borneo turning complex challenges into memorable digital experiences, treat every line of code as a story—written with care to turn real-world challenges into seamless, innovative solutions. Explore my professional journey in the resume below.`}
             mode="word"
             threshold={0.025}
             stagger={0.1}
@@ -45,21 +45,20 @@ const About = () => {
             trigger="none"
           />
         </p>
-
-        <button className="self-start text-sm md:text-md w-52 mx-auto">
-          <div className="flex items-center justify-center mx-auto text-xl">
-            <RevealText
-              text={`Download Resume ➜]`}
-              direction="up"
-              duration={0.7}
-              delay={0.2}
-              trigger="viewport"
-            />
-          </div>
-        </button>
       </div>
-
+      <button className="self-start text-sm md:text-md w-52 mx-auto">
+        <div className="flex items-center justify-center mx-auto text-xl">
+          <RevealText
+            text={`Download Resume ➜]`}
+            direction="up"
+            duration={0.7}
+            delay={0.2}
+            trigger="viewport"
+          />
+        </div>
+      </button>
       {/* Experience Section */}
+
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 items-start mlg:gap-0 md:text-5xl">
         <h2 className="text-4xl md:text-5xl font-semibold mb-4 md:mb-0 lg:sticky lg:top-20 lg:bottom-20 lg:pb-4 self-start">
           <RevealText

@@ -4,6 +4,8 @@ import RevealText from "@/components/ui/RevealText";
 import RevealMedia from "@/components/ui/RevealMedia";
 import Link from "next/link";
 import { getProjectBySlug, projects } from "@/data/projects";
+import { Icon } from "@iconify/react";
+import RevealWrapper from "@/components/ui/RevealWrapper";
 
 export function generateStaticParams() {
   return projects.map((project) => ({
@@ -142,20 +144,14 @@ export default async function ProjectDetail({
           />
         </h2>
 
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-8">
           {project.techStack.map((tech, index) => (
-            <span
-              key={tech}
-              className="px-4 py-2 rounded-full border border-white/20 text-sm md:text-base text-gray-300 hover:border-white/50 transition-colors"
-            >
-              <RevealText
-                text={tech}
-                mode="sentence"
-                duration={0.3}
-                delay={0.3 + index * 0.05}
-                trigger="viewport"
-              />
-            </span>
+            <RevealWrapper key={index} delay={0.3 + index * 0.1} direction="up">
+              <div className="text-3xl md:text-4xl flex flex-col items-center justify-center gap-1">
+                {tech.icon && <Icon icon={tech.icon} width={48} height={48} />}
+                <span className="text-sm">{tech.label}</span>
+              </div>
+            </RevealWrapper>
           ))}
         </div>
       </div>
