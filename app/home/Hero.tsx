@@ -36,14 +36,6 @@ const Hero = () => {
             mode={"word"}
           />
         </h1>
-        {/* <h2 className="text-xs md:text-xl mt-4">
-          <RevealText
-            text={`Crafting somehting reliable with clarity, care, and long-term thinking.`}
-            duration={0.4}
-            stagger={0.15}
-            delay={0.3}
-          />
-        </h2> */}
         <div className="absolute bottom-0 left-0 text-[0.6rem] md:text-sm text-neutral-400 text-left">
           <span className="font-extrabold block md:inline">
             <RevealText

@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useCallback } from "react";
-import { motion, useAnimation, Variants } from "framer-motion";
-import { useRevealAnimation } from "@/hooks/useRevealAnimation";
+import React, { useRef } from "react";
+import { motion, useInView, Variants } from "framer-motion";
 
 type Mode = "word" | "sentence" | "character";
 type Direction = "up" | "down";
@@ -17,6 +16,7 @@ interface RevealTextProps {
   stagger?: number;
   threshold?: number;
   trigger?: Trigger;
+  once?: boolean;
 }
 
 export default function RevealText({
@@ -28,8 +28,17 @@ export default function RevealText({
   stagger = 0.05,
   threshold = 0.3,
   trigger = "none",
+  once = true,
 }: RevealTextProps) {
-  const controls = useAnimation();
+  const ref = useRef<HTMLSpanElement>(null);
+
+  const isInView = useInView(ref, {
+    once,
+    amount: threshold,
+  });
+
+  // trigger "none" → langsung visible, tidak perlu cek isInView
+  const shouldReveal = trigger === "none" ? true : isInView;
 
   const segments: string[] = (() => {
     if (mode === "character")
@@ -53,14 +62,6 @@ export default function RevealText({
     }),
   };
 
-  const ref = useRevealAnimation<HTMLSpanElement>({
-    trigger,
-    threshold,
-    onPlay: useCallback(() => controls.start("visible"), [controls]),
-    onReset: useCallback(() => controls.start("hidden"), [controls]),
-    onSnap: useCallback(() => controls.set("visible"), [controls]),
-  });
-
   return (
     <span ref={ref} style={{ display: "inline" }} aria-label={text}>
       {segments.map((segment, i) => (
@@ -77,7 +78,7 @@ export default function RevealText({
             <motion.span
               custom={i}
               initial="hidden"
-              animate={controls}
+              animate={shouldReveal ? "visible" : "hidden"} // ← langsung reaktif
               variants={variants}
               style={{
                 display: "inline-block",

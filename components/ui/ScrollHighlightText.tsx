@@ -25,7 +25,7 @@ const ScrollHighlightText: React.FC<ScrollHighlightTextProps> = ({
           <span
             key={index}
             className={`transition-colors duration-200 ${
-              isHighlighted ? "text-white" : "text-white/15"
+              isHighlighted ? "text-white" : "text-white/30"
             }`}
           >
             {word}{" "}

@@ -1,6 +1,6 @@
 "use client";
 
-import Card from "@/components/ui/Card";
+import Card from "@/components/Card";
 import RevealText from "@/components/ui/RevealText";
 import { projects } from "@/data/projects";
 

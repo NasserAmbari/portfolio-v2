@@ -2,8 +2,8 @@ import { ParallaxImageConfig } from "@/components/ui/ParallaxImage";
 
 const imagesAbout: ParallaxImageConfig[] = [
   {
-    src: "/assets/project_famous.webp",
-    alt: "Mountains",
+    src: "/assets/parallax_1.webp",
+    alt: "Master of Ceremony",
     topPercent: 20,
     left: "15%",
     direction: "right",
@@ -13,8 +13,8 @@ const imagesAbout: ParallaxImageConfig[] = [
     height: "h-40 md:h-64",
   },
   {
-    src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80",
-    alt: "Forest",
+    src: "/assets/parallax_2.webp",
+    alt: "Focus",
     topPercent: 30,
     right: "20%",
     direction: "left", // datang dari kiri ke kanan
@@ -24,8 +24,8 @@ const imagesAbout: ParallaxImageConfig[] = [
     height: "h-36 md:h-56",
   },
   {
-    src: "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=600&q=80",
-    alt: "Desert",
+    src: "/assets/parallax_3.webp",
+    alt: "Code",
     topPercent: 40,
     left: "20%",
     direction: "right", // datang dari kanan ke kiri
@@ -35,8 +35,8 @@ const imagesAbout: ParallaxImageConfig[] = [
     height: "h-44 md:h-68",
   },
   {
-    src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
-    alt: "Beach",
+    src: "/assets/parallax_4.webp",
+    alt: "Crochet",
     topPercent: 50,
     right: "15%",
     direction: "left",
@@ -46,8 +46,8 @@ const imagesAbout: ParallaxImageConfig[] = [
     height: "h-40 md:h-64",
   },
   {
-    src: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&q=80",
-    alt: "Snow mountain",
+    src: "/assets/parallax_5.webp",
+    alt: "My Best Friend",
     topPercent: 60,
     left: "15%",
     direction: "right",

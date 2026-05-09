@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 export type ParallaxDirection = "up" | "down" | "left" | "right";
 
@@ -39,6 +40,7 @@ export interface ParallaxImageConfig {
   height?: string;
   rounded?: string;
   className?: string;
+  sizes?: string;
 }
 
 interface ParallaxImageProps extends ParallaxImageConfig {
@@ -61,6 +63,7 @@ const ParallaxImage: React.FC<ParallaxImageProps> = ({
   height = "h-64",
   rounded = "rounded-2xl",
   className = "",
+  sizes = "(max-width: 768px) 50vw, 33vw",
   relativeScroll,
   sectionHeightPx,
 }) => {
@@ -123,13 +126,15 @@ const ParallaxImage: React.FC<ParallaxImageProps> = ({
   return (
     <div
       style={style}
-      className={`overflow-hidden shadow-2xl ${rounded} ${className}`}
+      className={`relative overflow-hidden shadow-2xl ${width} ${height} ${rounded} ${className}`}
     >
-      <img
+      <Image
         src={src}
         alt={alt}
         loading="lazy"
-        className={`${width} ${height} object-cover block`}
+        fill
+        sizes={sizes}
+        className="object-cover block"
       />
     </div>
   );

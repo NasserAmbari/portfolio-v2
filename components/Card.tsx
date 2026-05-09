@@ -40,7 +40,7 @@ const Card = ({
       initial={{ opacity: 0, y: yOffset }}
       whileInView={isTransitionReady ? { opacity: 1, y: 0 } : undefined}
       animate={!isTransitionReady ? { opacity: 0, y: yOffset } : undefined}
-      viewport={{ once: false, amount: threshold }}
+      viewport={{ once: true, amount: threshold }}
       transition={{
         duration,
         delay: totalDelay,

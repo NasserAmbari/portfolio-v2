@@ -3,8 +3,9 @@ import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/ui/CustomCursor";
 import PageTransition from "@/components/ui/PageTransition";
-import Navbar from "@/components/ui/Navbar";
-import Footer from "@/components/ui/Footer";
+import LenisProvider from "@/components/ui/LenisProvider";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -64,10 +65,12 @@ export default function RootLayout({
       <body className={`${plusJakartaSans.className} antialiased text-white`}>
         <CustomCursor size={16} color="#ffffff" stiffness={500} />
         <Navbar />
-        <div className="px-4 md:px-8 lg:px-12 w-full max-w-480 pt-24 mx-auto">
-          <PageTransition>{children}</PageTransition>
-          <Footer />
-        </div>
+        <LenisProvider>
+          <div className="px-4 md:px-8 lg:px-12 w-full max-w-480 pt-24 mx-auto">
+            <PageTransition>{children}</PageTransition>
+            <Footer />
+          </div>
+        </LenisProvider>
       </body>
     </html>
   );

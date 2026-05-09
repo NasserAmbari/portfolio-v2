@@ -1,5 +1,5 @@
 import RevealText from "@/components/ui/RevealText";
-import Card from "@/components/ui/Card";
+import Card from "@/components/Card";
 import { projects } from "@/data/projects";
 
 export const metadata = {

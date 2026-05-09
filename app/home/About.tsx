@@ -1,11 +1,9 @@
 "use client";
 
 import ScrollHighlightText from "@/components/ui/ScrollHighlightText";
-import ParallaxImage, {
-  ParallaxImageConfig,
-} from "@/components/ui/ParallaxImage";
+import ParallaxImage from "@/components/ui/ParallaxImage";
 import useScrollSection from "@/hooks/useScrollSection";
-import imagesAbout from "@/data/home-about";
+import imagesAbout from "@/data/homeAbout";
 
 const TEXT =
   "This is my story, a creative developer who creates memorable digital experiences. Every line of code is written with care, designed to make users pause for a moment and feel something. This isn’t just a website—it’s a story.";
@@ -17,7 +15,7 @@ const About = () => {
   return (
     <div
       ref={sectionRef}
-      className="relative w-screen h-[300vh] -mb-[200px] -mt-[200px] md:-mb-[200px]"
+      className="relative w-screen h-[300vh] -mb-50 -mt-50 md:-mb-50"
       style={{
         marginLeft: "calc(50% - 50vw)",
         marginRight: "calc(50% - 50vw)",

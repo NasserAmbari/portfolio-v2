@@ -188,7 +188,7 @@ export function VelocityIconItem({
     <div
       className={cn("flex flex-col items-center gap-2 select-none", className)}
     >
-      <div className="flex items-center justify-center w-12 h-12 rounded-xl text-white/70 transition-colors hover:bg-white/10 hover:border-white/20">
+      <div className="flex items-center justify-center  rounded-xl text-white/70 transition-colors hover:bg-white/10 hover:border-white/20">
         {children}
       </div>
       {label && (
