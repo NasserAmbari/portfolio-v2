@@ -74,7 +74,7 @@ const Hero = () => {
         duration={0.7}
         delay={1}
         threshold={0.3}
-        className="w-full h-[30vh] md:h-[50vh] lg:h-[70vh] rounded-2xl"
+        className="w-full h-[30vh] md:h-[50vh] lg:h-[70vh] max-h-1/2 rounded-2xl"
         direction="up"
         trigger="none"
       />
