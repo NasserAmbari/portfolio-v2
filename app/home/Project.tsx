@@ -6,8 +6,8 @@ import { projects } from "@/data/projects";
 
 const Project = () => {
   return (
-    <div className="grid grid-cols-1 gap-8">
-      <h2 className="text-3xl md:text-5xl font-semibold">
+    <div className="flex flex-col gap-12">
+      <h2 className="text-3xl md:text-8xl font-semibold">
         <RevealText
           text={`FEATURED PROJECT`}
           mode="sentence"
@@ -27,6 +27,8 @@ const Project = () => {
             href={`/projects/${project.slug}`}
             index={index}
             threshold={0.1}
+            duration={0.7}
+            delay={0.2}
           />
         ))}
       </div>

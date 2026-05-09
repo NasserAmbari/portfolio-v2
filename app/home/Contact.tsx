@@ -21,7 +21,7 @@ I have a project that I believe would be a great fit for your skills and experti
   };
 
   return (
-    <div className="relative min-h-[60vh] flex flex-col justify-center items-center text-center my-12 gap-8 md:gap-16">
+    <div className="relative min-h-[40vh] md:min-h-[60vh] flex flex-col justify-center items-center text-center my-12 gap-8 md:gap-16">
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
               z-0 pointer-events-none transition-opacity duration-500
