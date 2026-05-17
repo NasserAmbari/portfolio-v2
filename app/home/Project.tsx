@@ -7,7 +7,7 @@ import { projects } from "@/data/projects";
 const Project = () => {
   return (
     <div className="flex flex-col gap-12">
-      <h2 className="text-4xl md:text-5xl lg:text-7xl font-semibold">
+      <h2 className="w-[50%] md:w-full text-6xl md:text-5xl lg:text-7xl font-semibold">
         <RevealText
           text={`Featured Project`}
           mode="sentence"

@@ -32,7 +32,7 @@ export default function Services() {
     <div className="flex flex-col gap-12 w-full overflow-hidden">
       {/* Wrapper Judul */}
       <div className="w-full">
-        <h2 className="text-4xl md:text-5xl lg:text-7xl font-semibold text-center">
+        <h2 className="text-6xl lg:text-7xl font-semibold text-center">
           <RevealText
             text={`Bringing Ideas to Life`}
             mode="sentence"
@@ -48,7 +48,7 @@ export default function Services() {
         {services.map((service, i) => (
           <div
             key={i}
-            className={`w-[85vw] max-w-[350px] md:max-w-[600px] h-[45vh] md:h-[500px] ${service.color} border border-white/10 rounded-[2rem] p-6 md:p-12 flex flex-col justify-between`}
+            className={`w-[90vw] sm:w-[75vw] md:max-w-[600px] h-[45vh] md:h-[500px] ${service.color} border border-white/10 rounded-[2rem] p-6 md:p-12 flex flex-col justify-between`}
           >
             <div className="flex justify-between items-start gap-8">
               <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold max-w-[80%] leading-tight">

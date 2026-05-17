@@ -121,14 +121,14 @@ export default function InfiniteCarousel({
         <>
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-48 lg:w-64 z-10"
+            className="pointer-events-none absolute inset-y-0 left-0 w-0 sm:w-6 md:w-48 lg:w-64 z-10"
             style={{
               background: `linear-gradient(to right, #0a0a0a, transparent)`,
             }}
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-48 lg:w-64 z-10"
+            className="pointer-events-none absolute inset-y-0 right-0 w-0 sm:w-6 md:w-48 lg:w-64 z-10"
             style={{
               background: `linear-gradient(to left, #0a0a0a, transparent)`,
             }}
