@@ -69,21 +69,13 @@ I have a project that I believe would be a great fit for your skills and experti
             itemClassName="gap-10 px-3"
             className="w-[90%] py-6 text-2xl md:text-7xl font-bold rounded-full border border-white/20 mx-auto bg-gray-950"
           >
-            <VelocityIconItem>CONTACT ME</VelocityIconItem>
+            <VelocityIconItem>AVAILABLE FOR WORK</VelocityIconItem>
             <VelocityIconItem>-</VelocityIconItem>
-            <VelocityIconItem>CALL ME</VelocityIconItem>
+            <VelocityIconItem>AVAILABLE FOR WORK</VelocityIconItem>
             <VelocityIconItem>-</VelocityIconItem>
-            <VelocityIconItem>BOOK ME</VelocityIconItem>
+            <VelocityIconItem>AVAILABLE FOR WORK</VelocityIconItem>
             <VelocityIconItem>-</VelocityIconItem>
-            <VelocityIconItem>RIGHT NOW</VelocityIconItem>
-            <VelocityIconItem>-</VelocityIconItem>
-            <VelocityIconItem>CONTACT ME</VelocityIconItem>
-            <VelocityIconItem>-</VelocityIconItem>
-            <VelocityIconItem>CALL ME</VelocityIconItem>
-            <VelocityIconItem>-</VelocityIconItem>
-            <VelocityIconItem>BOOK ME</VelocityIconItem>
-            <VelocityIconItem>-</VelocityIconItem>
-            <VelocityIconItem>RIGHT NOW</VelocityIconItem>
+            <VelocityIconItem>AVAILABLE FOR WORK</VelocityIconItem>
             <VelocityIconItem>-</VelocityIconItem>
           </ScrollVelocityRow>
         </ScrollVelocityContainer>

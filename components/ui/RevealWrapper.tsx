@@ -13,6 +13,7 @@ interface RevealWrapperProps {
   direction?: "up" | "down" | "left" | "right";
   trigger?: Trigger;
   threshold?: number;
+  once?: boolean;
 }
 
 export default function RevealWrapper({
@@ -22,6 +23,7 @@ export default function RevealWrapper({
   direction = "up",
   trigger = "viewport",
   threshold = 0.3,
+  once = true,
 }: RevealWrapperProps) {
   const controls = useAnimation();
 
@@ -43,6 +45,7 @@ export default function RevealWrapper({
   const ref = useRevealAnimation<HTMLDivElement>({
     trigger,
     threshold,
+    once,
     onPlay: useCallback(() => {
       controls.start({
         opacity: 1,

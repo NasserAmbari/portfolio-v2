@@ -28,7 +28,7 @@ const About = () => {
             <ScrollHighlightText
               text={TEXT}
               progress={progress}
-              className="text-2xl md:text-4xl lg:text-5xl text-center leading-relaxed"
+              className="text-2xl sm:text-4xl  lg:text-5xl text-center leading-relaxed"
             />
           </div>
         </div>

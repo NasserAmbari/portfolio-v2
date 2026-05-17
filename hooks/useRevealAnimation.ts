@@ -9,6 +9,7 @@ type Trigger = "viewport" | "none";
 interface UseRevealAnimationOptions {
   trigger?: Trigger;
   threshold?: number;
+  once?: boolean;
   onPlay: () => void;
   onReset: () => void;
   onSnap: () => void;
@@ -23,6 +24,7 @@ interface UseRevealAnimationOptions {
 export function useRevealAnimation<T extends HTMLElement>({
   trigger = "none",
   threshold = 0.3,
+  once = false,
   onPlay,
   onReset,
   onSnap,
@@ -62,11 +64,13 @@ export function useRevealAnimation<T extends HTMLElement>({
       return;
     }
     if (current === "visible" && isBelow) {
+      if (once) return;
       animState.current = "below";
       onReset();
       return;
     }
     if (current === "above" && isBelow) {
+      if (once) return;
       animState.current = "below";
       onReset();
       return;
