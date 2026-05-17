@@ -32,9 +32,9 @@ export default function Services() {
     <div className="flex flex-col gap-12 w-full overflow-hidden">
       {/* Wrapper Judul */}
       <div className="w-full">
-        <h2 className="text-5xl md:text-8xl font-semibold text-center">
+        <h2 className="text-4xl md:text-5xl lg:text-7xl font-semibold text-center">
           <RevealText
-            text={`SERVICES`}
+            text={`Bringing Ideas to Life`}
             mode="sentence"
             delay={0.2}
             stagger={0.2}
