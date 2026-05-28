@@ -1,9 +1,14 @@
 import RevealText from "@/components/ui/RevealText";
 import RevealMedia from "@/components/ui/RevealMedia";
+import DownloadResumeButton from "@/components/DownloadResumeButton";
 import { experiences } from "@/data/experience";
 
 export const metadata = {
   title: "About",
+};
+
+const handleDownloadResume = () => {
+  window.open("/CV_Ahmad Nasser Ambari.pdf", "_blank");
 };
 
 const About = () => {
@@ -46,17 +51,8 @@ const About = () => {
           />
         </p>
       </div>
-      <button className="self-start text-sm md:text-md w-52 mx-auto">
-        <div className="flex items-center justify-center mx-auto text-xl">
-          <RevealText
-            text={`Download Resume ➜]`}
-            direction="up"
-            duration={0.7}
-            delay={0.2}
-            trigger="viewport"
-          />
-        </div>
-      </button>
+      <DownloadResumeButton />
+
       {/* Experience Section */}
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 items-start mlg:gap-0 md:text-5xl">
