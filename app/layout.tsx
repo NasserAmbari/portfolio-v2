@@ -62,7 +62,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${plusJakartaSans.className} antialiased text-white`}>
+      <body
+        className={`${plusJakartaSans.className} antialiased text-white bg-black`}
+      >
         <CustomCursor size={16} color="#ffffff" stiffness={500} />
         <Navbar />
         <LenisProvider>
